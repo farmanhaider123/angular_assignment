@@ -1,0 +1,32 @@
+<form>
+
+    <h2> Add Product Details:</h2>
+    <form (ngSubmit)="postdata()">
+        <div class="form-group">
+            <label> Category</label>
+            <input type="text" name="pname" minlength="5" maxlength="10" [(ngModel)]="myData.category" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label> Name</label>
+            <input type="text" name="pname" minlength="5" maxlength="20" [(ngModel)]="myData.pname" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label> price</label>
+            <input type="text" name="price" minlength="1" maxlength="15" [(ngModel)]="myData.price" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label> quantity</label>
+            <input type="text" name="quantity" minlength="1" maxlength="5"[(ngModel)]="myData.quantity" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label> Description</label>
+            <input type="text" name="description" [(ngModel)]="myData.description" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Image Url</label>
+            <input type="text" name="image" [(ngModel)]="myData.image" class="form-control" />
+        </div>
+        <input type="submit" value="Add" class="btn btn-success mt-2" />
+       
+    </form>
+    <br />

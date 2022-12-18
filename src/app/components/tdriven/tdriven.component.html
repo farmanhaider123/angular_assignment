@@ -1,0 +1,26 @@
+<h2>Contact us</h2>
+<form #myform="ngForm" (ngSubmit)="postdata(myform)">
+    <div class="form-group">
+    <label for="">Full Name</label>
+    <input type="text" name="fullname" class="form-control" ngModel #fullname='ngModel' required
+    pattern="[a-zA-Z ]+">
+    <div class="alert alert-danger" *ngIf="fullname.invalid && fullname.touched">
+        <div *ngIf="fullname.errors && fullname.errors['required']">Fullname is required</div>
+        <div *ngIf="fullname.errors && fullname.errors['pattern']">Only alphabet allows</div>
+    </div>
+<label for="">Email</label>
+<input type="email" name="email" class="form-control" ngModel #email='ngModel' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+<div class="alert alert-danger" *ngIf="email.invalid &&email.touched">
+    <div *ngIf="email.errors && email.errors['required']">Emailis required</div>
+    <div *ngIf="email.errors && email.errors['pattern']">Only @johnmail.com</div>
+</div>
+    <label for="">Mobile</label>
+    <input type="phone" name="mobile" ngModel #mobile='ngModel' class="form-control" required
+    pattern="[6-9][0-9]{9}">
+    <div class="alert alert-danger" *ngIf="mobile.invalid && mobile.touched">
+    <div *ngIf="mobile.errors && mobile.errors['required']">Mobile is required</div>
+    <div *ngIf="mobile.errors && mobile.errors['pattern']">Only 10 digit phone allow start from 6 to 9</div>
+    </div>
+    <input type="button" class="btn btn-success mt-3" value="Submit" [disabled]="myform.invalid">
+    </div>
+</form>
