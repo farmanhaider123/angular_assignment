@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnChanges,OnInit, SimpleChanges } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { ProductServicesService } from 'src/app/services/product-services.service';
 import Swal from 'sweetalert2';
@@ -8,20 +8,37 @@ import Swal from 'sweetalert2';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+
 export class ProductsComponent implements OnInit{
+
+
+   selected = ['1'];
+ 
    myData={category:'',pname:'',price:'',quantity:'',description:'',image:''}
    proData:any;
- 
+   filteredString:string='';
+  value:string='';
+  value1:string=' ';
    upid:string='';
-   
-  constructor(private pser:ProductServicesService) { }
+
+  constructor(private pser:ProductServicesService) {
+
+    console.log(this.value) }
+
+
+
 
   ngOnInit(): void {
+    
     this.pser.getAllProduct()
     .subscribe((res:any)=>{
         console.log(res);
         this.proData=res;
     })
+  }
+  onChange(){
+this.value="price";
+console.log(this.value)
   }
   delPro(id:any){
     Swal.fire({

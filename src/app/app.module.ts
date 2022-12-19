@@ -12,8 +12,10 @@ import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ViewComponent } from './components/view/view.component';
 import { TdrivenComponent } from './components/tdriven/tdriven.component';
-import { RegisComponent } from './components/regis/regis.component';    
-
+import { RegisComponent } from './components/regis/regis.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';    
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,13 +28,15 @@ import { RegisComponent } from './components/regis/regis.component';
     ViewComponent,
     TdrivenComponent,
     RegisComponent,
+    FilterPipe,
+    SortPipe,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule,MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,9 +4,20 @@
 
     <div> <h1 class="text-center"> Products</h1> </div>
     <hr />
+<div class="form-group">
+    <label>Search Products</label>
+    <input type="text" class="form-control"  [(ngModel)]="filteredString" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label>sort Products</label>
+    <input type="text" class="form-control" [(ngModel)]="value" class="form-control" />
+</div>
+
+ 
 
 <div class="row">
-    <div class="col-sm-4" *ngFor="let p of proData">
+    <div class="col-sm-4" *ngFor="let p of proData| filter:filteredString|sort:[value]">
         <div class="card mt-2" style="width: 20rem;">
             <div class="card-body">
                 <img style=" 
