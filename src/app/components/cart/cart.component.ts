@@ -11,44 +11,40 @@ export class CartComponent implements OnInit {
 constructor(private pser:ProductServicesService,private route:ActivatedRoute,private router:Router){
 
 }
-  id:any;
+
   myData:any;
-   proData:any;
+   proData:any=[];   
   count=0;
+  element:any
  ngOnInit(): void {
-    this.route.params.subscribe(par=>{
-      this.id=par['id'];
-      this.pser.getProductById(this.id)
-      .subscribe(res=>{
-         if(res){
-           this.myData={id:this.id,category:res.category,pname:res.pname,price:res.price,quantity:res.quantity,description:res.description,image:res.image}
-           if(localStorage.getItem('mycart')!=undefined){
-          let cdata :any=localStorage.getItem('mycart');
+ let cdata:any=localStorage.getItem('mycart');
          let arr=JSON.parse(cdata);
-         for (const i in arr)
-         {
-         if(arr[i].id==this.id){
-           alert("Product Already in a cart")
-         }
-         else {
-          arr.push(this.myData);
-          localStorage.setItem('mycart',JSON.stringify(arr));
-           alert("Product added in a cart")
-           this.count++;
-           this.proData= arr
-         }
-        }
-         
-     }
-     else {
-      let arr=[];
-      arr.push(this.myData);
-      localStorage.setItem('mycart',JSON.stringify(arr));
-      alert("Product added in a cart")
-         this.proData= arr
-     }
-  }
-})
-})
+         arr.forEach((res1: any)=> {
+           this.pser.getProductById(res1).subscribe(res=>{
+         if(res){
+           this.myData={id:res._id,category:res.category,pname:res.pname,price:res.price,quantity:res.quantity,description:res.description,image:res.image}
+        
+          }
+         this.proData.push(this.myData);
+         console.log(this.proData)
+      })
+         });
+ 
+    
+  
 }
+ delPro(id:any){
+this.proData.forEach((val:any,ind:any)=>
+{
+if(id==this.proData[ind].id)
+{
+  this.proData.splice(ind,1);
+
+         localStorage.removeItem('mycart')
+            this.pser.setcart(this.proData);
+}
+   this.pser.setcart(this.proData);
+  
+})
+ }
 }

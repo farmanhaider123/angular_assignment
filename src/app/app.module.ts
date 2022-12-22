@@ -16,6 +16,7 @@ import { RegisComponent } from './components/regis/regis.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';    
 import {MatSelectModule} from '@angular/material/select';
+import { AppNgForLoopDirective } from './app-ng-for-loop.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import {MatSelectModule} from '@angular/material/select';
     RegisComponent,
     FilterPipe,
     SortPipe,
+    AppNgForLoopDirective,
 
   ],
   imports: [

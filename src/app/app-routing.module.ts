@@ -15,7 +15,7 @@ const routes: Routes = [
   {path:'addproduct',component:AddproductComponent},
   {path:'editproduct/:id',component:EditproductComponent},
   {path:'view/:id',component:ViewComponent},
-  {path:'cart/:id',component:CartComponent},
+  {path:'cart',component:CartComponent},
   {path:'contactform',component:TdrivenComponent},
     {path:'regis',component:RegisComponent},
 ];

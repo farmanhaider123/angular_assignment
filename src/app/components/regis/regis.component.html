@@ -1,5 +1,6 @@
 
 <h2> Registration</h2>
+<main>
 <form [formGroup]="myForm" (ngSubmit)="postData()">
     <div class="form-group">
         <label> FullName</label>
@@ -41,7 +42,7 @@
   <div class="form-group">
         <label> Mobile</label>
         <input type="text" name="mobile" class="form-control" formControlName="mobile" />
-        <div class="alert alert-danger" *ngIf="fdata['mobile'].invalid && fdata['mobile'].touched">
+        <div style="color:red" *ngIf="fdata['mobile'].invalid && fdata['mobile'].touched">
             <div *ngIf="fdata['mobile'].errors && fdata['mobile'].errors['required']">
                 Mobile is required
             </div>
@@ -90,3 +91,4 @@
     </div>
  <input type="submit" value="Submit" class="btn btn-success" [disabled]="myForm.invalid" />
 </form>
+</main>

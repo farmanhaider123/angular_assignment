@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class ProductsComponent implements OnInit{
 
 
-   selected = ['1'];
+
  
    myData={category:'',pname:'',price:'',quantity:'',description:'',image:''}
    proData:any;
@@ -62,6 +62,30 @@ this.pser.deleteData(id)
     })
       
     }
+    addCart(id:any){
+     if(localStorage.getItem('mycart')!=undefined){
+         let cdata:any=localStorage.getItem('mycart');
+         let arr=JSON.parse(cdata);
+         if(arr.includes(id)){
+          Swal.fire("Product Already in a cart",'','warning')
+         }
+         else {
+          arr.push(id);
+          localStorage.setItem('mycart',JSON.stringify(arr));
+          this.pser.setcart(arr)
+      Swal.fire("Add Cart Succuessfully",'','success')
+         }
+     }
+     else {
+      let arr=[];
+      arr.push(id);
+      localStorage.setItem('mycart',JSON.stringify(arr));
+       this.pser.setcart(arr)
+       let arr1=this.proData;
+       console.log(arr1)
+    Swal.fire("Add Cart Succuessfully",'','success')
+     }
+  }
   }
    
 

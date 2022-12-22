@@ -1,9 +1,7 @@
 
 
-<hr />
 
-    <div> <h1 class="text-center"> Products</h1> </div>
-    <hr />
+
 <div class="form-group">
     <label>Search Products</label>
     <input type="text" class="form-control"  [(ngModel)]="filteredString" class="form-control" />
@@ -14,11 +12,14 @@
     <input type="text" class="form-control" [(ngModel)]="value" class="form-control" />
 </div>
 
- 
+
 
 <div class="row">
+    <div>
+        <h1 class="text-center"> Products</h1>
+    </div>
     <div class="col-sm-4" *ngFor="let p of proData| filter:filteredString|sort:[value]">
-        <div class="card mt-2" style="width: 20rem;">
+        <div class="card mt-2 d-grid gap-3" >
             <div class="card-body">
                 <img style=" 
     width: 200px;
@@ -34,8 +35,10 @@
                   <a [routerLink]="['/view',p._id]"  class="btn btn-success">view</a>
                   <a [routerLink]="['/editproduct',p._id]"  style="margin-left:5px;" class="btn btn-primary"> Edit</a>
                 <button class="btn btn-danger " style="margin-left:5px;" (click)="delPro(p._id)"> Delete</button>
-                <a [routerLink]="['/cart',p._id]" style="margin-left:5px; color:white" class="btn btn-info">cart</a>
+                <a style="margin-left:3px; color:white" (click)=" addCart(p._id)"class="btn btn-info">cart</a>
             </div>
         </div>
     </div>
+  
+</div>
 </div>
